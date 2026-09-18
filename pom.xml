@@ -4,10 +4,10 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>ru.emyxar</groupId>
-	<artifactId>security-starter</artifactId>
+	<artifactId>declarative-security-spring-boot-starter</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>security-starter</name>
-	<description>Spring Boot стартер для упрощенной конфигурации безопасности</description>
+	<name>Декларативный Security Starter</name>
+	<description>Spring Boot стартер для декларативной конфигурации безопасности</description>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

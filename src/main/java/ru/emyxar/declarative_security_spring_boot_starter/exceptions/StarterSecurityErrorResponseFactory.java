@@ -1,4 +1,4 @@
-package ru.emyxar.security_starter.exceptions;
+package ru.emyxar.declarative_security_spring_boot_starter.exceptions;
 
 import jakarta.servlet.http.HttpServletRequest;
 

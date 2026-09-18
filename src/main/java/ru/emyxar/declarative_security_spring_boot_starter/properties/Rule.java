@@ -1,4 +1,4 @@
-package ru.emyxar.security_starter.properties;
+package ru.emyxar.declarative_security_spring_boot_starter.properties;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
@@ -10,7 +10,7 @@ public class Rule {
 
     @Pattern(
             regexp = "^(?!ROLE_)[A-Z0-9_]+$",
-            message = "Роль указывается с прфиксом ROLE_, например ROLE_ADMIN"
+            message = "Роль должна состоять из заглавных латинских букв, цифр и подчёркивания, без префикса ROLE_ (например: ADMIN)"
     )
     private String role;
 
@@ -38,5 +38,14 @@ public class Rule {
 
     public void setAuthenticated(boolean authenticated) {
         this.authenticated = authenticated;
+    }
+
+    @Override
+    public String toString() {
+        return "Rule{" +
+                "endpoint='" + endpoint + '\'' +
+                ", role='" + role + '\'' +
+                ", authenticated=" + authenticated +
+                '}';
     }
 }

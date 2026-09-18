@@ -1,4 +1,4 @@
-package ru.emyxar.security_starter.properties;
+package ru.emyxar.declarative_security_spring_boot_starter.properties;
 
 public class Error {
 
@@ -19,5 +19,13 @@ public class Error {
 
     public void setUnauthorizedMessage(String unauthorizedMessage) {
         this.unauthorizedMessage = unauthorizedMessage;
+    }
+
+    @Override
+    public String toString() {
+        return "Error{" +
+                "accessDeniedMessage='" + accessDeniedMessage + '\'' +
+                ", unauthorizedMessage='" + unauthorizedMessage + '\'' +
+                '}';
     }
 }

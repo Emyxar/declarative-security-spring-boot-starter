@@ -1,4 +1,4 @@
-package ru.emyxar.security_starter.properties;
+package ru.emyxar.declarative_security_spring_boot_starter.properties;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.validation.Valid;
@@ -12,11 +12,6 @@ import java.util.List;
 @Validated
 @ConfigurationProperties(prefix = "security.config")
 public class SecurityProperties {
-
-    @PostConstruct
-    void logValidationLoaded() {
-        System.out.println("Security starter properties loaded");
-    }
 
     @Valid
     private List<Rule> rules = new ArrayList<>();
@@ -90,5 +85,17 @@ public class SecurityProperties {
 
     public void setAllowCredentials(boolean allowCredentials) {
         this.allowCredentials = allowCredentials;
+    }
+
+    @Override
+    public String toString() {
+        return "SecurityProperties{" +
+                "rules=" + rules +
+                ", errors=" + errors +
+                ", allowedOrigins=" + allowedOrigins +
+                ", allowedMethods=" + allowedMethods +
+                ", allowedHeaders=" + allowedHeaders +
+                ", allowCredentials=" + allowCredentials +
+                '}';
     }
 }

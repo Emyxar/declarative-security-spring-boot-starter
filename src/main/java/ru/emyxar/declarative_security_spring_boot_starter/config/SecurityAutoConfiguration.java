@@ -1,5 +1,7 @@
-package ru.emyxar.security_starter.config;
+package ru.emyxar.declarative_security_spring_boot_starter.config;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -16,13 +18,13 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import ru.emyxar.security_starter.properties.Rule;
-import ru.emyxar.security_starter.exceptions.internal.DefaultSecurityErrorResponse;
-import ru.emyxar.security_starter.exceptions.StarterSecurityErrorResponseFactory;
-import ru.emyxar.security_starter.exceptions.handlers.StarterAccessDeniedHandler;
-import ru.emyxar.security_starter.exceptions.handlers.StarterAuthenticationEntryPoint;
-import ru.emyxar.security_starter.filter.StarterTokenFilter;
-import ru.emyxar.security_starter.properties.SecurityProperties;
+import ru.emyxar.declarative_security_spring_boot_starter.properties.Rule;
+import ru.emyxar.declarative_security_spring_boot_starter.exceptions.internal.DefaultSecurityErrorResponse;
+import ru.emyxar.declarative_security_spring_boot_starter.exceptions.StarterSecurityErrorResponseFactory;
+import ru.emyxar.declarative_security_spring_boot_starter.exceptions.handlers.StarterAccessDeniedHandler;
+import ru.emyxar.declarative_security_spring_boot_starter.exceptions.handlers.StarterAuthenticationEntryPoint;
+import ru.emyxar.declarative_security_spring_boot_starter.filter.StarterTokenFilter;
+import ru.emyxar.declarative_security_spring_boot_starter.properties.SecurityProperties;
 import tools.jackson.databind.ObjectMapper;
 
 
@@ -33,6 +35,8 @@ import tools.jackson.databind.ObjectMapper;
 })
 @EnableConfigurationProperties(SecurityProperties.class)
 public class SecurityAutoConfiguration {
+
+    private static final Logger log = LoggerFactory.getLogger(SecurityAutoConfiguration.class);
 
     @Bean
     @ConditionalOnMissingBean(StarterSecurityErrorResponseFactory.class)
@@ -100,7 +104,14 @@ public class SecurityAutoConfiguration {
             auth.anyRequest().authenticated();
         });
 
-        return http.build();
+        try {
+            SecurityFilterChain chain = http.build();
+            log.info("DSS | SecurityFilterChain собран по параметрам: {}", props);
+            return chain;
+        } catch (Exception e) {
+            log.error("DSS | Не удалось собрать SecurityFilterChain", e);
+            throw e;
+        }
     }
 
     private CorsConfigurationSource corsConfigurationSource(SecurityProperties props) {

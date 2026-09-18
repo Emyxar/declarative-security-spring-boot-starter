@@ -1,7 +1,7 @@
-package ru.emyxar.security_starter.exceptions.internal;
+package ru.emyxar.declarative_security_spring_boot_starter.exceptions.internal;
 
 import jakarta.servlet.http.HttpServletRequest;
-import ru.emyxar.security_starter.exceptions.StarterSecurityErrorResponseFactory;
+import ru.emyxar.declarative_security_spring_boot_starter.exceptions.StarterSecurityErrorResponseFactory;
 
 public class DefaultSecurityErrorResponse implements StarterSecurityErrorResponseFactory {
 

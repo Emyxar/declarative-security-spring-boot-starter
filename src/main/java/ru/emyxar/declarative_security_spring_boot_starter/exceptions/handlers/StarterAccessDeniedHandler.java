@@ -1,11 +1,11 @@
-package ru.emyxar.security_starter.exceptions.handlers;
+package ru.emyxar.declarative_security_spring_boot_starter.exceptions.handlers;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.web.access.AccessDeniedHandler;
-import ru.emyxar.security_starter.exceptions.StarterSecurityErrorResponseFactory;
+import ru.emyxar.declarative_security_spring_boot_starter.exceptions.StarterSecurityErrorResponseFactory;
 import tools.jackson.databind.ObjectMapper;
 
 import java.io.IOException;

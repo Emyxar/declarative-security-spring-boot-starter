@@ -1,4 +1,4 @@
-package ru.emyxar.security_starter.filter;
+package ru.emyxar.declarative_security_spring_boot_starter.filter;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

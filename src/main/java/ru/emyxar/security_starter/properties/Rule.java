@@ -1,9 +1,19 @@
-package ru.emyxar.security_starter.config.properties;
+package ru.emyxar.security_starter.properties;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 
 public class Rule {
 
+    @NotBlank(message = "Эндпоинт не может быть пустым")
     private String endpoint;
+
+    @Pattern(
+            regexp = "^(?!ROLE_)[A-Z0-9_]+$",
+            message = "Роль указывается с прфиксом ROLE_, например ROLE_ADMIN"
+    )
     private String role;
+
     private boolean authenticated = false;
 
     public String getEndpoint() {

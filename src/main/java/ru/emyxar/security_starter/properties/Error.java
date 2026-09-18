@@ -1,4 +1,4 @@
-package ru.emyxar.security_starter.config.properties;
+package ru.emyxar.security_starter.properties;
 
 public class Error {
 

@@ -3,9 +3,9 @@ package ru.emyxar.security_starter.exceptions;
 import jakarta.servlet.http.HttpServletRequest;
 
 @FunctionalInterface
-public interface SecurityErrorResponseFactory {
+public interface StarterSecurityErrorResponseFactory {
 
-    Object createErrorResponse(int status,
+    Object createErrorResponse(String status,
                                String message,
                                HttpServletRequest request,
                                Exception exception);

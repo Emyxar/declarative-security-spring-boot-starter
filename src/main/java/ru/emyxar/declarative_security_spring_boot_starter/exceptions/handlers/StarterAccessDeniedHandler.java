@@ -1,24 +1,22 @@
-package ru.emyxar.security_starter.exceptions.handlers;
+package ru.emyxar.declarative_security_spring_boot_starter.exceptions.handlers;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.web.access.AccessDeniedHandler;
-import ru.emyxar.security_starter.exceptions.SecurityErrorResponseFactory;
+import ru.emyxar.declarative_security_spring_boot_starter.exceptions.StarterSecurityErrorResponseFactory;
 import tools.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 
-import static jakarta.servlet.http.HttpServletResponse.SC_FORBIDDEN;
-
 public class StarterAccessDeniedHandler implements AccessDeniedHandler {
 
-    private final SecurityErrorResponseFactory responseFactory;
+    private final StarterSecurityErrorResponseFactory responseFactory;
     private final ObjectMapper objectMapper;
     private final String message;
 
-    public StarterAccessDeniedHandler(SecurityErrorResponseFactory responseFactory, ObjectMapper objectMapper, String message) {
+    public StarterAccessDeniedHandler(StarterSecurityErrorResponseFactory responseFactory, ObjectMapper objectMapper, String message) {
         this.responseFactory = responseFactory;
         this.objectMapper = objectMapper;
         this.message = message;
@@ -30,7 +28,7 @@ public class StarterAccessDeniedHandler implements AccessDeniedHandler {
                        AccessDeniedException accessDeniedException) throws IOException, ServletException {
 
         Object body = responseFactory.createErrorResponse(
-                SC_FORBIDDEN,
+                "FORBIDDEN",
                 message,
                 request,
                 accessDeniedException);

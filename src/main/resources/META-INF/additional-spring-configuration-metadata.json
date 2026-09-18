@@ -1,0 +1,66 @@
+{
+  "properties": [
+    {
+      "name": "security.config.rules[].endpoint",
+      "type": "java.lang.String",
+      "description": "Шаблон пути, к которому применяется правило доступа, например /api/admin/**."
+    },
+    {
+      "name": "security.config.rules[].role",
+      "type": "java.lang.String",
+      "description": "Требуемая роль без префикса ROLE_, например ADMIN. При указании имеет приоритет над authenticated."
+    },
+    {
+      "name": "security.config.rules[].authenticated",
+      "type": "java.lang.Boolean",
+      "defaultValue": false,
+      "description": "Требуется ли аутентифицированный пользователь, если роль не указана."
+    },
+    {
+      "name": "security.config.errors.access-denied-message",
+      "type": "java.lang.String",
+      "defaultValue": "Доступ запрещён",
+      "description": "Текст в стандартном JSON-ответе при HTTP 403."
+    },
+    {
+      "name": "security.config.errors.unauthorized-message",
+      "type": "java.lang.String",
+      "defaultValue": "Требуется аутентификация",
+      "description": "Текст в стандартном JSON-ответе при HTTP 401."
+    },
+    {
+      "name": "security.config.allowed-origins",
+      "type": "java.util.List<java.lang.String>",
+      "description": "Разрешённые источники CORS. Не используйте * при allow-credentials=true."
+    },
+    {
+      "name": "security.config.allowed-methods",
+      "type": "java.util.List<java.lang.String>",
+      "description": "HTTP-методы, разрешённые CORS-политикой."
+    },
+    {
+      "name": "security.config.allowed-headers",
+      "type": "java.util.List<java.lang.String>",
+      "description": "Заголовки запросов, разрешённые CORS-политикой."
+    },
+    {
+      "name": "security.config.allow-credentials",
+      "type": "java.lang.Boolean",
+      "defaultValue": false,
+      "description": "Разрешает ли CORS-запросам передавать credentials."
+    }
+  ],
+  "hints": [
+    {
+      "name": "security.config.allowed-methods",
+      "values": [
+        { "value": "GET" },
+        { "value": "POST" },
+        { "value": "PUT" },
+        { "value": "PATCH" },
+        { "value": "DELETE" },
+        { "value": "OPTIONS" }
+      ]
+    }
+  ]
+}
